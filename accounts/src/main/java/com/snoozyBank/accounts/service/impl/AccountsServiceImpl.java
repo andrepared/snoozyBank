@@ -26,8 +26,8 @@ private CustomerRepository customerRepository;
     @Override
     public void createAccount(CustomerDto customerDto) {
         Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
-        customerRepository.save(customer);
-        accountsRepository.save(createNewAccount(customer));
+       Customer savedCustomer = customerRepository.save(customer);
+        accountsRepository.save(createNewAccount(savedCustomer));
     }
 
     private Accounts createNewAccount(Customer customer)
